@@ -1,0 +1,71 @@
+
+syntax = "proto3";
+
+message SignupRequest {
+  string firstName = 1;
+  string lastName  = 2;
+  string email     = 3;
+  string password  = 4;
+}
+
+message SignupResponse {
+  bool   success = 1;
+  string message = 2;
+}
+
+message LoginRequest {
+  string email    = 1;
+  string password = 2;
+}
+
+message LoginResponse {
+  bool   success = 1;
+  string message = 2;
+}
+
+message UserResponse {
+  bool   success = 1;
+  string message = 2;
+  uint64 userId  = 3;
+  string email   = 4;
+  string firstName = 5;
+  string lastName  = 6;
+}
+
+
+message AuthStatusResponse {
+  bool   success = 1;
+  string message = 2;
+  int32  code    = 3;   // 0=OK, 1=access token expired, 2=refresh token expired/invalid, 3=invalid credentials, 4=user not found
+}
+
+
+message VerifyResponse {
+  bool valid = 1;
+}
+
+
+message AddContactRequest {
+  string email = 1;
+}
+
+message AddContactResponse {
+  bool   success   = 1;
+  string message   = 2;
+  uint64 userId    = 3;   // contact's user ID
+  string firstName = 4;
+  string lastName  = 5;
+}
+
+
+message UpdateProfileRequest {
+  string firstName = 1;
+  string lastName  = 2;
+}
+
+message UpdateProfileResponse {
+  bool   success   = 1;
+  string message   = 2;
+  string firstName = 3;
+  string lastName  = 4;
+}
