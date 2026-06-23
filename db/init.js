@@ -4,7 +4,11 @@
 import postgres from 'postgres';
 import { readFileSync } from 'fs';
 
-process.loadEnvFile();   // load .env for this standalone script
+try {
+  process.loadEnvFile();
+} catch {
+  // .env file not found – using environment variables from Render
+}
 
 const sql = postgres(process.env.DATABASE_URL, {
   ssl: process.env.DATABASE_SSL === 'true' ? 'require' : false,
